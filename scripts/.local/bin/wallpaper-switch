@@ -1,0 +1,71 @@
+#!/bin/bash
+
+WALLPAPER_DIR="$HOME/.config/background-images"
+STATE_FILE="$HOME/.cache/current-wallpaper"
+
+# Get total number of wallpapers
+get_total() {
+    ls "$WALLPAPER_DIR"/*.{jpg,png} 2>/dev/null | wc -l
+}
+
+# Get current index
+get_current() {
+    if [ -f "$STATE_FILE" ]; then
+        cat "$STATE_FILE"
+    else
+        echo 1
+    fi
+}
+
+# Find wallpaper file by index
+get_wallpaper() {
+    local idx=$1
+    local file
+    file=$(ls "$WALLPAPER_DIR"/$idx.* 2>/dev/null | head -1)
+    echo "$file"
+}
+
+# Set wallpaper
+set_wallpaper() {
+    local idx=$1
+    local file
+    file=$(get_wallpaper "$idx")
+
+    if [ -f "$file" ]; then
+        swww img "$file" \
+            --transition-type grow \
+            --transition-duration 1 \
+            --transition-fps 60 \
+            --transition-pos center
+        echo "$idx" > "$STATE_FILE"
+    fi
+}
+
+# Main logic
+total=$(get_total)
+current=$(get_current)
+
+case "$1" in
+    next)
+        next=$((current + 1))
+        if [ "$next" -gt "$total" ]; then
+            next=1
+        fi
+        set_wallpaper "$next"
+        ;;
+    prev)
+        prev=$((current - 1))
+        if [ "$prev" -lt 1 ]; then
+            prev=$total
+        fi
+        set_wallpaper "$prev"
+        ;;
+    random)
+        random=$((RANDOM % total + 1))
+        set_wallpaper "$random"
+        ;;
+    *)
+        echo "Usage: wallpaper-switch [next|prev|random]"
+        exit 1
+        ;;
+esac

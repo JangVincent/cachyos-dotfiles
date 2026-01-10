@@ -1,0 +1,34 @@
+/* Minimal transparent theme */
+
+window {
+    background: alpha(#1e1e2e, 0.2);
+    border-radius: 12px;
+    border: none;
+    padding: 8px 16px;
+}
+
+image {
+    color: #cdd6f4;
+    margin-right: 8px;
+}
+
+progressbar,
+progressbar trough {
+    min-height: 6px;
+    border-radius: 3px;
+    background: alpha(#313244, 0.5);
+}
+
+progressbar progress {
+    min-height: 6px;
+    border-radius: 3px;
+    background: #a6e3a1;
+}
+
+.muted progressbar progress {
+    background: #f38ba8;
+}
+
+.muted image {
+    color: #f38ba8;
+}
