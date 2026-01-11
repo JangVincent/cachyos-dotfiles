@@ -2,7 +2,7 @@
 
 /* 전체 바 스타일 - 다크 + 투명 */
 window#waybar {
-    background: rgba(30, 30, 46, 0.85);
+    background: rgba(33, 33, 43, 0.85);
     color: #cdd6f4;
     font-family: monospace;
     font-size: 14px;
