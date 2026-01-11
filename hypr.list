@@ -1,0 +1,92 @@
+# Hyprland Ricing Packages
+# Generated from packages.txt and .config analysis
+# 의존성으로 자동 설치되는 패키지 제외됨
+
+# === Core Hyprland ===
+hyprland                      # 타일링 Wayland 컴포지터 (메인 윈도우 매니저)
+hyprlock                      # Hyprland용 화면 잠금
+hyprpolkitagent               # Hyprland용 Polkit 인증 에이전트
+hyprtoolkit                   # Hyprland 도구 모음
+xdg-desktop-portal-hyprland   # Hyprland용 XDG 데스크탑 포탈 (화면 공유 등)
+
+# === Status Bar & Launchers ===
+waybar                        # Wayland용 커스터마이즈 가능한 상태바
+wofi                          # Wayland용 앱 런처 (rofi 대체)
+wlogout                       # Wayland용 로그아웃/전원 메뉴
+
+# === Notifications ===
+dunst                         # 경량 알림 데몬
+
+# === OSD & Wallpaper ===
+swayosd                       # 볼륨/밝기 OSD 표시
+swww                          # Wayland용 애니메이션 배경화면 데몬
+
+# === Terminals ===
+kitty                         # GPU 가속 터미널 에뮬레이터
+
+# === Screenshot & Clipboard ===
+grim                          # Wayland용 스크린샷 도구
+slurp                         # Wayland용 영역 선택 도구 (grim과 함께 사용)
+wl-clipboard                  # Wayland용 클립보드 도구 (wl-copy, wl-paste)
+cliphist                      # 클립보드 히스토리 매니저
+
+# === Display & Theme Settings ===
+nwg-displays                  # Wayland용 디스플레이 설정 GUI
+nwg-look                      # GTK 테마 설정 GUI (lxappearance 대체)
+qt5ct                         # Qt5 테마/스타일 설정
+qt6ct                         # Qt6 테마/스타일 설정
+
+# === GTK Theme ===
+catppuccin-gtk-theme-mocha    # Catppuccin Mocha GTK 테마
+
+# === Icons ===
+papirus-icon-theme            # Papirus 아이콘 테마 (SVG 기반)
+
+# === Fonts (Nerd Fonts for icons) ===
+noto-fonts                    # Google Noto 폰트 (다국어 지원)
+noto-fonts-cjk                # Noto CJK 폰트 (한중일 문자)
+noto-fonts-emoji              # Noto 이모지 폰트
+ttf-fantasque-nerd            # Fantasque Sans Mono + Nerd Font 아이콘
+ttf-meslo-nerd                # Meslo 폰트 + Nerd Font 아이콘
+
+# === Audio (PipeWire) ===
+pipewire-alsa                 # PipeWire ALSA 호환 레이어
+pipewire-pulse                # PipeWire PulseAudio 호환 레이어
+wireplumber                   # PipeWire 세션 매니저
+pavucontrol                   # PulseAudio 볼륨 컨트롤 GUI
+
+# === Controls ===
+brightnessctl                 # 화면 밝기 조절 CLI
+
+# === Authentication ===
+polkit                        # 권한 관리 프레임워크
+
+# === Display Manager ===
+sddm                          # Simple Desktop Display Manager (로그인 화면)
+
+# === Session Manager ===
+uwsm                          # Universal Wayland Session Manager
+
+# === System Monitoring ===
+btop                          # 리소스 모니터 (htop 대체, TUI)
+fastfetch                     # 시스템 정보 표시 (neofetch 대체)
+
+# === Shell Customization ===
+starship                      # 크로스 쉘 커스텀 프롬프트
+
+# === Input Method (Korean) ===
+fcitx5                        # 입력기 프레임워크
+fcitx5-configtool             # Fcitx5 설정 GUI
+fcitx5-gtk                    # Fcitx5 GTK 모듈
+fcitx5-hangul                 # Fcitx5 한글 입력 모듈
+fcitx5-qt                     # Fcitx5 Qt 모듈
+
+# === Bluetooth ===
+blueman                       # 블루투스 매니저 GUI
+bluez-utils                   # 블루투스 유틸리티 (bluetoothctl 등)
+
+# === File Manager ===
+thunar                        # XFCE 파일 매니저 (경량)
+
+# === Debugging/Development ===
+wev                           # Wayland 이벤트 뷰어 (키 입력 확인용)

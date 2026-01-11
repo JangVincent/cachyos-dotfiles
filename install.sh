@@ -40,20 +40,12 @@ mkdir -p ~/.local/bin
 # Stow all packages
 echo "Creating symlinks..."
 for pkg in "${PACKAGES[@]}"; do
-    echo "  Stowing $pkg..."
-    stow -v -d "$DOTFILES_DIR" -t ~ "$pkg"
+    if [ -d "$DOTFILES_DIR/$pkg" ]; then
+        echo "  Stowing $pkg..."
+        stow -v -d "$DOTFILES_DIR" -t ~ "$pkg"
+    fi
 done
 
 echo ""
-echo "=== Required packages ==="
-echo "Install these if not already installed:"
-echo ""
-echo "sudo pacman -S hyprland waybar kitty dunst wofi swayosd brightnessctl playerctl"
-echo "sudo pacman -S btop starship wlogout grim slurp cliphist swww"
-echo ""
-echo "=== SDDM Theme (optional) ==="
-echo "git clone https://github.com/JaKooLit/simple-sddm-2 /tmp/simple-sddm-2"
-echo "sudo cp -r /tmp/simple-sddm-2 /usr/share/sddm/themes/"
-echo "echo -e '[Theme]\nCurrent=simple-sddm-2' | sudo tee /etc/sddm.conf.d/theme.conf"
-echo ""
-echo "Done! Reload Hyprland with: hyprctl reload"
+echo "=== Done! ==="
+echo "Reload Hyprland with: hyprctl reload"
