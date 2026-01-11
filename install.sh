@@ -10,14 +10,8 @@ DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 echo "=== Vincent's Dotfiles Installer ==="
 echo ""
 
-# Check if stow is installed
-if ! command -v stow &> /dev/null; then
-    echo "Installing GNU Stow..."
-    sudo pacman -S --noconfirm stow
-fi
-
-# Packages to stow
-PACKAGES=(
+# ~/.config 에 링크할 폴더들
+CONFIG_DIRS=(
     hypr
     waybar
     kitty
@@ -27,24 +21,41 @@ PACKAGES=(
     starship
     wlogout
     btop
-    gtk
-    qt
-    wallpapers
-    scripts
+    gtk-3.0
+    gtk-4.0
+    qt5ct
+    qt6ct
+    background-images
 )
 
-# Create necessary directories
+# Create directories
 mkdir -p ~/.config
 mkdir -p ~/.local/bin
 
-# Stow all packages
-echo "Creating symlinks..."
-for pkg in "${PACKAGES[@]}"; do
-    if [ -d "$DOTFILES_DIR/$pkg" ]; then
-        echo "  Stowing $pkg..."
-        stow -v -d "$DOTFILES_DIR" -t ~ "$pkg"
+# Link config directories
+echo "Creating symlinks to ~/.config..."
+for dir in "${CONFIG_DIRS[@]}"; do
+    if [ -d "$DOTFILES_DIR/$dir" ]; then
+        # 기존 링크나 폴더가 있으면 제거
+        rm -rf ~/.config/$dir
+        ln -sf "$DOTFILES_DIR/$dir" ~/.config/$dir
+        echo "  $dir → ~/.config/$dir"
     fi
 done
+
+# Link scripts to ~/.local/bin
+echo ""
+echo "Creating symlinks to ~/.local/bin..."
+if [ -d "$DOTFILES_DIR/scripts" ]; then
+    for script in "$DOTFILES_DIR/scripts"/*; do
+        if [ -f "$script" ]; then
+            name=$(basename "$script")
+            rm -f ~/.local/bin/$name
+            ln -sf "$script" ~/.local/bin/$name
+            echo "  $name → ~/.local/bin/$name"
+        fi
+    done
+fi
 
 echo ""
 echo "=== Done! ==="
