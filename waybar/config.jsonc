@@ -104,11 +104,18 @@
 
     // 시계
     "clock": {
+        "locale": "en_US.UTF-8",
         "format": "{:%Y-%m-%d %H:%M}",
-        "tooltip-format": "<tt>{calendar}</tt>",
+        "tooltip-format": "<tt><small><span color='#f5e0dc'><b>{:%Y - %m}</b></span>\n{calendar}</small></tt>",
         "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "",
             "format": {
-                "today": "<span color='#a6e3a1'><b>{}</b></span>"
+                "months": "<span size='1pt'>{}</span>",
+                "days": "<span color='#cdd6f4'>{}</span>",
+                "weekdays": "<span color='#f9e2af'>{}</span>",
+                "today": "<span color='#a6e3a1'><b><u>{}</u></b></span>"
             }
         }
     }
