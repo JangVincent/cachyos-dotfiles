@@ -49,14 +49,14 @@
     // 네트워크 - 텍스트
     "network": {
         "interval": 2,
-        "format-wifi": "WiFi {signalStrength}%",
-        "format-ethernet": "Ethernet",
+        "format-wifi": "  {signalStrength}%",
+        "format-ethernet": "󰈀 ",
         "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "Disconnected",
-        "format-alt": "D:{bandwidthDownBytes} U:{bandwidthUpBytes}",
+        "format-disconnected": "󱔑 Disconnected",
+        "format-alt": " :{bandwidthDownBytes} :{bandwidthUpBytes}",
         "tooltip": true,
         "tooltip-format": "{essid}\nIP: {ipaddr}/{cidr}\nSignal: {signalStrength}%",
-        "on-click": "nm-connection-editor"
+        "on-click": "networkmanager_dmenu"
     },
 
     // 블루투스 - 아이콘 + on/off
@@ -76,16 +76,16 @@
     // CPU - 텍스트
     "cpu": {
         "interval": 5,
-        "format": "CPU {usage}%",
-        "format-alt": "CPU {avg_frequency}GHz",
+        "format": "  {usage}%",
+        "format-alt": " {avg_frequency}GHz",
         "on-click": "kitty btop"
     },
 
     // 메모리 - 텍스트
     "memory": {
         "interval": 10,
-        "format": "RAM {used:0.1f}G",
-        "format-alt": "RAM {percentage}%",
+        "format": "  {used:0.1f}G",
+        "format-alt": "  {percentage}%",
         "tooltip": true,
         "tooltip-format": "Used: {used:0.1f}GB / {total:0.1f}GB\nAvailable: {avail:0.1f}GB",
         "on-click": "kitty btop"
@@ -93,10 +93,10 @@
 
     // 배터리 - 텍스트
     "battery": {
-        "format": "BAT {capacity}%",
-        "format-charging": "CHG {capacity}%",
-        "format-plugged": "PLUG {capacity}%",
-        "format-full": "FULL",
+        "format": "󱈏 {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󱤁  {capacity}%",
+        "format-full": "󰁹 FULL",
         "format-alt": "{time}",
         "tooltip-format": "{timeTo}",
         "on-click": "kitty btop"
@@ -105,7 +105,7 @@
     // 시계
     "clock": {
         "locale": "en_US.UTF-8",
-        "format": "{:%Y-%m-%d %H:%M}",
+        "format": " {:%Y-%m-%d %H:%M}",
         "tooltip-format": "<tt><small><span color='#f5e0dc'><b>{:%Y - %m}</b></span>\n{calendar}</small></tt>",
         "calendar": {
             "mode": "month",
