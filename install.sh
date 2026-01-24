@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Vincent's Dotfiles Installer
-# Hyprland + CachyOS setup
+# Niri + CachyOS setup
 
 set -e
 
@@ -12,11 +12,10 @@ echo ""
 
 # ~/.config 에 링크할 폴더들
 CONFIG_DIRS=(
-    hypr
+    niri
     waybar
     kitty
     dunst
-    wofi
     swayosd
     starship
     wlogout
@@ -26,6 +25,8 @@ CONFIG_DIRS=(
     qt5ct
     qt6ct
     background-images
+    networkmanager-dmenu
+    fuzzel
 )
 
 # Create directories
@@ -59,4 +60,4 @@ fi
 
 echo ""
 echo "=== Done! ==="
-echo "Reload Hyprland with: hyprctl reload"
+echo "Reload Niri config or restart session"

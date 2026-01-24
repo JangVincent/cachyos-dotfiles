@@ -1,13 +1,13 @@
 # Vincent's Dotfiles
 
-Hyprland + CachyOS setup with Catppuccin Mocha theme.
+Niri + CachyOS setup with Catppuccin Mocha theme.
 
 ## Preview
 
-- **WM**: Hyprland
+- **WM**: Niri
 - **Bar**: Waybar
 - **Terminal**: Kitty
-- **Launcher**: Wofi
+- **Launcher**: Fuzzel
 - **Notifications**: Dunst
 - **Theme**: Catppuccin Mocha (Green accent)
 
@@ -15,11 +15,10 @@ Hyprland + CachyOS setup with Catppuccin Mocha theme.
 
 ```
 dotfiles/
-├── hypr/           # Hyprland config
+├── niri/           # Niri config
 ├── waybar/         # Status bar
 ├── kitty/          # Terminal
 ├── dunst/          # Notifications
-├── wofi/           # App launcher
 ├── swayosd/        # Volume/brightness OSD
 ├── starship/       # Shell prompt
 ├── wlogout/        # Logout menu
@@ -43,30 +42,20 @@ cd ~/dotfiles
 
 ```bash
 # Core
-sudo pacman -S hyprland waybar kitty dunst wofi
+sudo pacman -S niri waybar kitty dunst fuzzel
 
 # Utilities
-sudo pacman -S swayosd brightnessctl playerctl grim slurp cliphist
+sudo pacman -S swayosd brightnessctl playerctl grim slurp cliphist swaylock
 
 # Extras
-sudo pacman -S btop starship wlogout swww
-```
-
-## SDDM Theme
-
-Using [simple-sddm-2](https://github.com/JaKooLit/simple-sddm-2) with Catppuccin colors.
-
-```bash
-git clone https://github.com/JaKooLit/simple-sddm-2 /tmp/simple-sddm-2
-sudo cp -r /tmp/simple-sddm-2 /usr/share/sddm/themes/
-echo -e '[Theme]\nCurrent=simple-sddm-2' | sudo tee /etc/sddm.conf.d/theme.conf
+sudo pacman -S btop starship wlogout swaybg
 ```
 
 ## Keybindings
 
 | Key | Action |
 |-----|--------|
-| Super + Space | App launcher (Wofi) |
+| Super + Space | App launcher (Fuzzel) |
 | Super + T | Terminal |
 | Super + Q | Close window |
 | Super + L | Lock screen |

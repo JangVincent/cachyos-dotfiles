@@ -1,0 +1,29 @@
+#!/bin/bash
+# niri 단축키를 fuzzel로 보여주는 스크립트
+
+CONFIG="$HOME/.config/niri/config.kdl"
+
+# binds 섹션에서 단축키 추출
+sed -n '/^binds {/,/^}/p' "$CONFIG" | \
+    grep -E '^\s+\S+.*\{' | \
+    sed 's/allow-when-locked=true//g; s/cooldown-ms=[0-9]*//g; s/allow-inhibiting=false//g' | \
+    awk '{
+        # 단축키 부분 추출
+        key = ""
+        for (i=1; i<=NF; i++) {
+            if ($i ~ /\{/) break
+            key = key (key ? " " : "") $i
+        }
+        # 액션 추출
+        action = ""
+        capture = 0
+        for (i=1; i<=NF; i++) {
+            if ($i ~ /\{/) { capture = 1; continue }
+            if ($i ~ /\}/) { capture = 0 }
+            if (capture) action = action (action ? " " : "") $i
+        }
+        gsub(/;/, "", action)
+        gsub(/^[ \t]+/, "", key)
+        if (key && action) printf "%-25s  →  %s\n", key, action
+    }' | \
+    fuzzel --dmenu --prompt="Keybinds: " --width=60
