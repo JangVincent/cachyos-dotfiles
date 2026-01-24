@@ -32,6 +32,7 @@ dotfiles/
 ├── qt5ct/              # Qt5 theme settings
 ├── qt6ct/              # Qt6 theme settings
 ├── fcitx5/             # Korean input method
+├── keyd/               # Key remapping (system config)
 ├── networkmanager-dmenu/  # Network manager menu
 ├── background-images/  # Wallpapers
 ├── scripts/            # Custom scripts
@@ -61,7 +62,7 @@ sudo pacman -S swayosd brightnessctl playerctl grim slurp cliphist wl-clipboard
 sudo pacman -S zsh starship zoxide eza bat fzf ripgrep fd
 
 # System Tools
-sudo pacman -S btop wlogout networkmanager-dmenu
+sudo pacman -S btop wlogout networkmanager-dmenu keyd
 
 # Korean Input
 sudo pacman -S fcitx5 fcitx5-hangul fcitx5-configtool fcitx5-gtk fcitx5-qt

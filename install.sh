@@ -72,6 +72,16 @@ for file in "${HOME_FILES[@]}"; do
     fi
 done
 
+# System configs (requires sudo)
+echo ""
+echo "Installing system configs (requires sudo)..."
+if [ -d "$DOTFILES_DIR/keyd" ]; then
+    sudo mkdir -p /etc/keyd
+    sudo cp "$DOTFILES_DIR/keyd/default.conf" /etc/keyd/default.conf
+    echo "  keyd/default.conf → /etc/keyd/default.conf"
+    sudo systemctl restart keyd 2>/dev/null || echo "  (keyd service not running)"
+fi
+
 echo ""
 echo "=== Done! ==="
 echo "Reload Niri config or restart session"
