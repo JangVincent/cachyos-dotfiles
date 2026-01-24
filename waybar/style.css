@@ -19,7 +19,8 @@ window#waybar {
 
 /* 왼쪽 Island - 워크스페이스 */
 .modules-left {
-    background: rgba(30, 30, 46, 0.85);
+    /* background: rgba(30, 30, 46, 0.85); */
+    background: black;
     border-radius: 16px;
     margin: 4px 0 4px 8px;
     padding: 0 4px;
@@ -28,6 +29,7 @@ window#waybar {
 /* 중앙 Island - 창 제목 */
 .modules-center {
     background: rgba(30, 30, 46, 0.85);
+    background: black;
     border-radius: 16px;
     margin: 4px;
     padding: 0 4px;
@@ -36,6 +38,7 @@ window#waybar {
 /* 오른쪽 Island - 시스템 정보 */
 .modules-right {
     background: rgba(30, 30, 46, 0.85);
+    background: black;
     border-radius: 16px;
     margin: 4px 8px 4px 0;
     padding: 0 4px;
