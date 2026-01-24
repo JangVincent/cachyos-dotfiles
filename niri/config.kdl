@@ -95,6 +95,7 @@ window-rule {
 // ============================================================
 // SPAWN AT STARTUP
 // ============================================================
+spawn-at-startup "xwayland-satellite"
 spawn-at-startup "waybar"
 spawn-at-startup "dunst"
 spawn-at-startup "fcitx5" "-d"
@@ -106,6 +107,7 @@ spawn-at-startup "swayosd-server"
 // ENVIRONMENT VARIABLES
 // ============================================================
 environment {
+    DISPLAY ":1"
     XCURSOR_SIZE "24"
     GTK_IM_MODULE "fcitx"
     QT_IM_MODULE "fcitx"

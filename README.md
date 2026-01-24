@@ -55,6 +55,9 @@ cd ~/dotfiles
 # Core - Window Manager & Desktop
 sudo pacman -S niri waybar kitty dunst fuzzel swaylock swww
 
+# XWayland support (AUR)
+paru -S xwayland-satellite
+
 # Utilities
 sudo pacman -S swayosd brightnessctl playerctl grim slurp cliphist wl-clipboard
 

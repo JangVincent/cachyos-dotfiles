@@ -82,6 +82,14 @@ if [ -d "$DOTFILES_DIR/keyd" ]; then
     sudo systemctl restart keyd 2>/dev/null || echo "  (keyd service not running)"
 fi
 
+# Check for xwayland-satellite (required for X11 apps)
+echo ""
+if ! command -v xwayland-satellite &> /dev/null; then
+    echo "WARNING: xwayland-satellite not found!"
+    echo "  Install from AUR: paru -S xwayland-satellite"
+    echo "  Required for X11/Electron apps (Slack, Spotify, etc.)"
+fi
+
 echo ""
 echo "=== Done! ==="
 echo "Reload Niri config or restart session"

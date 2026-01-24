@@ -22,6 +22,7 @@
     "modules-right": [
         "network",
         "bluetooth",
+        "pulseaudio",
         "group/hardware",
         "battery",
         "clock",
@@ -75,6 +76,25 @@
         "tooltip-format-enumerate-connected": "{device_alias}",
         "tooltip-format-enumerate-connected-battery": "{device_alias} {device_battery_percentage}%",
         "on-click": "blueman-manager"
+    },
+
+    // 사운드 - 볼륨
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-bluetooth": "󰂰  {volume}%",
+        "format-muted": "󰝟  mute",
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "󰋋",
+            "headset": "󰋋",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "tooltip-format": "{desc}\n{volume}%",
+        "on-click": "pavucontrol",
+        "on-click-right": "swayosd-client --output-volume mute-toggle"
     },
 
     // CPU - 아이콘 (메모리 아이콘 공유)
