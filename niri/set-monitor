@@ -1,0 +1,23 @@
+#!/bin/bash
+
+case "$1" in
+    l|left)
+        niri msg output HDMI-A-1 position -3072 0
+        echo "외장 모니터: 왼쪽"
+        ;;
+    r|right)
+        niri msg output HDMI-A-1 position 1920 0
+        echo "외장 모니터: 오른쪽"
+        ;;
+    up|top)
+        niri msg output HDMI-A-1 position 0 -1728
+        echo "외장 모니터: 위"
+        ;;
+    *)
+        echo "Usage: set-monitor [l|r|up]"
+        echo "  l, left  - 외장 모니터를 왼쪽에"
+        echo "  r, right - 외장 모니터를 오른쪽에"
+        echo "  up, top  - 외장 모니터를 위에"
+        exit 1
+        ;;
+esac

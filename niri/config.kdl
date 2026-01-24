@@ -32,9 +32,14 @@ input {
 // OUTPUTS
 // ============================================================
 // Run `niri msg outputs` to see your outputs
-// Uncomment and configure as needed:
-/-output "eDP-1" {
-    mode "1920x1080@60.0"
+output "HDMI-A-1" {
+    mode "3840x2160@59.997"
+    scale 1.25
+    position x=-3072 y=0
+}
+
+output "eDP-1" {
+    mode "1920x1200@60.0"
     scale 1.0
     position x=0 y=0
 }
@@ -298,9 +303,9 @@ binds {
     Alt+Print { screenshot-window; }
 
     //? ------- Wallpaper ----------------
-    Mod+Alt+Right { spawn-sh "~/.local/bin/wallpaper-switch next"; }
-    Mod+Alt+Left { spawn-sh "~/.local/bin/wallpaper-switch prev"; }
-    Mod+Alt+Up { spawn-sh "~/.local/bin/wallpaper-switch random"; }
+    Mod+Ctrl+Comma { spawn-sh "~/.local/bin/wallpaper-switch prev"; }
+    Mod+Ctrl+Period { spawn-sh "~/.local/bin/wallpaper-switch next"; }
+    Mod+Ctrl+Slash { spawn-sh "~/.local/bin/wallpaper-switch random"; }
 
     //? ------- System ----------------
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
