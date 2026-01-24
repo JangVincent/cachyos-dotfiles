@@ -1,0 +1,41 @@
+ignore-empty-password
+font=sans-serif
+font-size=24
+
+# Catppuccin Mocha
+color=1e1e2e
+
+# Inside (default)
+inside-color=1e1e2e
+inside-clear-color=1e1e2e
+inside-ver-color=1e1e2e
+inside-wrong-color=1e1e2e
+
+# Ring
+ring-color=89b4fa
+ring-clear-color=f9e2af
+ring-ver-color=a6e3a1
+ring-wrong-color=f38ba8
+
+# Line (between ring and inside)
+line-color=1e1e2e
+line-clear-color=1e1e2e
+line-ver-color=1e1e2e
+line-wrong-color=1e1e2e
+
+# Separator
+separator-color=1e1e2e
+
+# Key highlight
+key-hl-color=a6e3a1
+bs-hl-color=f38ba8
+
+# Text
+text-color=cdd6f4
+text-clear-color=f9e2af
+text-ver-color=a6e3a1
+text-wrong-color=f38ba8
+
+# Indicator
+indicator-radius=100
+indicator-thickness=10

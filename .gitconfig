@@ -1,0 +1,8 @@
+[user]
+	signingkey = DB2216B149ED9220
+	name = VincentJang
+	email = vincentjangdev@gmail.com
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true

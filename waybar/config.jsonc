@@ -3,6 +3,7 @@
     "position": "top",
     "output": ["*"],
     "height": 32,
+    "spacing": 8,
     "exclusive": true,
     "passthrough": false,
     "reload_style_on_change": true,
@@ -21,11 +22,17 @@
     "modules-right": [
         "network",
         "bluetooth",
-        "cpu",
-        "memory",
+        "group/hardware",
         "battery",
-        "clock"
+        "clock",
+        "custom/power"
     ],
+
+    // CPU + 메모리 그룹
+    "group/hardware": {
+        "orientation": "horizontal",
+        "modules": ["cpu", "memory"]
+    },
 
     // ========== 모듈 설정 ==========
 
@@ -43,26 +50,26 @@
         "max-length": 50
     },
 
-    // 네트워크 - 텍스트
+    // 네트워크 - 아이콘
     "network": {
         "interval": 2,
-        "format-wifi": "WiFi {signalStrength}%",
-        "format-ethernet": "Eth",
-        "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "Disconnected",
-        "format-alt": "D:{bandwidthDownBytes} U:{bandwidthUpBytes}",
+        "format-wifi": "󰤨   {signalStrength}%",
+        "format-ethernet": "󰈀",
+        "format-linked": "󰈀   No IP",
+        "format-disconnected": "󰤭",
+        "format-alt": "   {bandwidthDownBytes}    {bandwidthUpBytes}",
         "tooltip": true,
         "tooltip-format": "{essid}\nIP: {ipaddr}/{cidr}\nSignal: {signalStrength}%",
         "on-click": "networkmanager_dmenu"
     },
 
-    // 블루투스 - 텍스트
+    // 블루투스 - 아이콘 + on/off
     "bluetooth": {
-        "format": "BT on",
-        "format-disabled": "BT off",
-        "format-off": "BT off",
-        "format-connected": "BT {num_connections}",
-        "format-connected-battery": "BT {device_battery_percentage}%",
+        "format": "󰂯  on",
+        "format-disabled": "󰂲  off",
+        "format-off": "󰂲  off",
+        "format-connected": "󰂱  on {num_connections}",
+        "format-connected-battery": "󰂱  on {device_battery_percentage}%",
         "tooltip-format": "{controller_alias}\n{num_connections} connected",
         "tooltip-format-connected": "{controller_alias}\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}",
@@ -70,39 +77,49 @@
         "on-click": "blueman-manager"
     },
 
-    // CPU - 텍스트
+    // CPU - 아이콘 (메모리 아이콘 공유)
     "cpu": {
         "interval": 5,
-        "format": "CPU {usage}%",
-        "format-alt": "CPU {avg_frequency}GHz",
+        "format": "󰍛  {usage}%",
+        "format-alt": "󰍛  {avg_frequency}GHz",
         "on-click": "kitty btop"
     },
 
-    // 메모리 - 텍스트
+    // 메모리 - 아이콘
     "memory": {
         "interval": 10,
-        "format": "RAM {used:0.1f}G",
-        "format-alt": "RAM {percentage}%",
+        "format": "󰍛  {used:0.1f}G",
+        "format-alt": "󰍛  {percentage}%",
         "tooltip": true,
         "tooltip-format": "Used: {used:0.1f}GB / {total:0.1f}GB\nAvailable: {avail:0.1f}GB",
         "on-click": "kitty btop"
     },
 
-    // 배터리 - 텍스트
+    // 배터리 - 레벨별 아이콘
     "battery": {
-        "format": "BAT {capacity}%",
-        "format-charging": "CHG {capacity}%",
-        "format-plugged": "AC {capacity}%",
-        "format-full": "FULL",
-        "format-alt": "{time}",
+        "states": {
+            "full": 100,
+            "good": 80,
+            "medium": 50,
+            "low": 25,
+            "critical": 10
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": "󰂄  {capacity}%",
+        "format-plugged": "󰚥  {capacity}%",
+        "format-full": "󰁹  FULL",
+        "format-alt": "{icon}  {time}",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
         "tooltip-format": "{timeTo}",
         "on-click": "kitty btop"
     },
 
-    // 시계
+    // 시계 - 아이콘
     "clock": {
+        "interval": 1,
         "locale": "en_US.UTF-8",
-        "format": "{:%Y-%m-%d %H:%M}",
+        "format": "󰥔   {:%Y-%m-%d %H:%M:%S}",
+        "format-alt": "󰃭   {:%H:%M:%S}",
         "tooltip-format": "<tt><small><span color='#f5e0dc'><b>{:%Y - %m}</b></span>\n{calendar}</small></tt>",
         "calendar": {
             "mode": "month",
@@ -115,5 +132,12 @@
                 "today": "<span color='#a6e3a1'><b><u>{}</u></b></span>"
             }
         }
+    },
+
+    // 전원 메뉴
+    "custom/power": {
+        "format": "󰐥",
+        "tooltip": false,
+        "on-click": "wlogout"
     }
 }

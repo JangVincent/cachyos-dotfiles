@@ -27,6 +27,8 @@ CONFIG_DIRS=(
     background-images
     networkmanager-dmenu
     fuzzel
+    swaylock
+    fcitx5
 )
 
 # Create directories
@@ -57,6 +59,18 @@ if [ -d "$DOTFILES_DIR/scripts" ]; then
         fi
     done
 fi
+
+# Link home directory dotfiles
+echo ""
+echo "Creating symlinks to home directory..."
+HOME_FILES=(.zshrc .gitconfig)
+for file in "${HOME_FILES[@]}"; do
+    if [ -f "$DOTFILES_DIR/$file" ]; then
+        rm -f ~/$file
+        ln -sf "$DOTFILES_DIR/$file" ~/$file
+        echo "  $file → ~/$file"
+    fi
+done
 
 echo ""
 echo "=== Done! ==="

@@ -1,79 +1,143 @@
-/* User custom styles - Text-based minimal waybar */
+/* Waybar Dynamic Island Style - Catppuccin Mocha */
 
-/* 전체 바 스타일 - 다크 + 투명 */
+/* ========== 기본 설정 ========== */
+* {
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+    border: none;
+    border-radius: 0;
+}
+
+/* 전체 바 - 완전 투명 */
 window#waybar {
-    background: rgba(33, 33, 43, 0.85);
+    background: transparent;
     color: #cdd6f4;
-    font-size: 14px;
-    border-bottom: 1px solid rgba(69, 71, 90, 0.5);
 }
 
-/* 모듈 간 간격 */
-.modules-right > widget > * {
-    margin-left: 8px;
-    margin-right: 8px;
+/* ========== Island 스타일 ========== */
+
+/* 왼쪽 Island - 워크스페이스 */
+.modules-left {
+    background: rgba(30, 30, 46, 0.85);
+    border-radius: 16px;
+    margin: 4px 0 4px 8px;
+    padding: 0 4px;
 }
 
-/* 워크스페이스 버튼 스타일 */
-window#waybar #workspaces button {
-    padding: 0 8px;
-    margin: 4px 2px;
-    border-radius: 4px;
-    font-weight: normal;
-    color: #93cee9;
+/* 중앙 Island - 창 제목 */
+.modules-center {
+    background: rgba(30, 30, 46, 0.85);
+    border-radius: 16px;
+    margin: 4px;
+    padding: 0 4px;
+}
+
+/* 오른쪽 Island - 시스템 정보 */
+.modules-right {
+    background: rgba(30, 30, 46, 0.85);
+    border-radius: 16px;
+    margin: 4px 8px 4px 0;
+    padding: 0 4px;
+}
+
+/* ========== 모듈 공통 스타일 ========== */
+#network,
+#bluetooth,
+#battery,
+#clock,
+#custom-power {
+    padding: 4px 10px;
+    margin: 3px 2px;
+    border-radius: 12px;
     background: transparent;
 }
 
-window#waybar #workspaces button.active {
+/* CPU + 메모리 그룹 */
+#hardware {
+    padding: 4px 10px;
+    margin: 3px 2px;
+    border-radius: 12px;
+    background: transparent;
+}
+
+#hardware #cpu {
+    padding: 0 8px 0 0;
+    margin: 0;
+    background: transparent;
+    border-right: 1px solid rgba(108, 112, 134, 0.5);
+}
+
+#hardware #memory {
+    padding: 0 0 0 8px;
+    margin: 0;
+    background: transparent;
+}
+
+/* Hover 효과 */
+#network:hover,
+#bluetooth:hover,
+#hardware:hover,
+#battery:hover,
+#clock:hover,
+#custom-power:hover {
+    background: rgba(69, 71, 90, 0.6);
+    border-radius: 12px;
+}
+
+/* ========== 워크스페이스 ========== */
+#workspaces button {
+    padding: 4px 8px;
+    margin: 3px 2px;
+    border-radius: 10px;
+    color: #bac2de;
+    background: transparent;
+}
+
+#workspaces button.active {
+    background: #a6e3a1;
+    color: #1e1e2e;
     font-weight: bold;
-    background-color: #91b53a;
-    color: #1f2328;
 }
 
-window#waybar #workspaces button:hover {
-    background-color: #b8d468;
-    color: #1f2328;
+#workspaces button:hover {
+    background: rgba(166, 227, 161, 0.3);
+    color: #a6e3a1;
 }
 
-/* 중앙 창 제목 */
+/* ========== 중앙 창 제목 ========== */
 #window {
-    font-weight: normal;
+    padding: 4px 12px;
+    margin: 3px;
+    color: #bac2de;
+    background: transparent;
 }
 
-/* ========== 오른쪽 모듈 폰트 색상 ========== */
+/* ========== 오른쪽 모듈 색상 ========== */
 
-/* 네트워크 - 청록색 */
+/* 네트워크 - 청록 */
 #network {
     color: #89dceb;
 }
 
-/* 블루투스 - 파란색 */
+/* 블루투스 - 파랑 */
 #bluetooth {
     color: #89b4fa;
 }
 
-/* CPU - 주황색 */
+/* CPU - 주황 */
 #cpu {
     color: #fab387;
 }
 
-/* 메모리 - 보라색 */
+/* 메모리 - 보라 */
 #memory {
     color: #cba6f7;
 }
 
-/* 배터리 - 초록색 */
+/* 배터리 - 초록 */
 #battery {
     color: #a6e3a1;
-}
-
-/* 배터리 상태별 색상 */
-#battery.warning {
-    color: #f9e2af;
-}
-
-#battery.critical {
-    color: #f38ba8;
 }
 
 #battery.charging,
@@ -81,8 +145,36 @@ window#waybar #workspaces button:hover {
     color: #94e2d5;
 }
 
+#battery.medium {
+    color: #f9e2af;
+}
+
+#battery.low {
+    color: #fab387;
+}
+
+#battery.critical {
+    color: #f38ba8;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0.5; }
+}
+
 /* 시계 - 흰색 */
 #clock {
     color: #cdd6f4;
     font-weight: bold;
+}
+
+/* 전원 버튼 - 빨강 */
+#custom-power {
+    color: #f38ba8;
+    font-size: 16px;
+    padding: 4px 10px;
+}
+
+#custom-power:hover {
+    background: rgba(243, 139, 168, 0.3);
 }
