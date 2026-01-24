@@ -34,7 +34,7 @@ input {
 // Run `niri msg outputs` to see your outputs
 output "HDMI-A-1" {
     mode "3840x2160@59.997"
-    scale 1.25
+    scale 1.0
     position x=-3072 y=0
 }
 
@@ -298,9 +298,9 @@ binds {
     XF86MonBrightnessDown allow-when-locked=true { spawn "swayosd-client" "--brightness" "lower"; }
 
     //? ------- Screenshots ----------------
-    Print { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
+    Mod+Ctrl+p { screenshot; }
+    Mod+Ctrl+s { screenshot-screen; }
+    Mod+Ctrl+w { screenshot-window; }
 
     //? ------- Wallpaper ----------------
     Mod+Ctrl+Comma { spawn-sh "~/.local/bin/wallpaper-switch prev"; }
