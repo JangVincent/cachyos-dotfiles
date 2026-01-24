@@ -95,7 +95,7 @@ window-rule {
 // ============================================================
 // SPAWN AT STARTUP
 // ============================================================
-spawn-at-startup "waybar" "-c" "/home/vincent/.config/niri/waybar-config.jsonc" "-s" "/home/vincent/.config/waybar/style.css"
+spawn-at-startup "waybar"
 spawn-at-startup "dunst"
 spawn-at-startup "fcitx5" "-d"
 spawn-at-startup "blueman-applet"
