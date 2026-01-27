@@ -1,0 +1,4 @@
+[opener]
+edit = [
+  { run = '/home/vincent/.local/share/bob/nightly/bin/nvim "$@"', block = true, for = "unix" },
+]

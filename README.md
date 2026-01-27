@@ -10,6 +10,8 @@ Niri + CachyOS setup with Catppuccin Mocha theme.
 - **Launcher**: Fuzzel
 - **Notifications**: Dunst
 - **Lock Screen**: Swaylock
+- **File Manager (GUI)**: Thunar
+- **File Manager (TUI)**: Yazi
 - **IME**: Fcitx5 (Korean)
 - **Theme**: Catppuccin Mocha (Green accent)
 
@@ -32,6 +34,7 @@ dotfiles/
 ├── qt5ct/              # Qt5 theme settings
 ├── qt6ct/              # Qt6 theme settings
 ├── fcitx5/             # Korean input method
+├── yazi/               # Terminal file manager
 ├── keyd/               # Key remapping (system config)
 ├── networkmanager-dmenu/  # Network manager menu
 ├── background-images/  # Wallpapers
@@ -53,25 +56,28 @@ cd ~/dotfiles
 
 ```bash
 # Core - Window Manager & Desktop
-sudo pacman -S niri waybar kitty dunst fuzzel swaylock swww
+paru -S niri waybar kitty dunst fuzzel swaylock swww
 
 # XWayland support (AUR)
 paru -S xwayland-satellite
 
+# File Manager
+paru -S thunar tumbler yazi-nightly-bin
+
 # Utilities
-sudo pacman -S swayosd brightnessctl playerctl grim slurp cliphist wl-clipboard
+paru -S swayosd brightnessctl playerctl grim slurp cliphist wl-clipboard
 
 # Shell & Prompt
-sudo pacman -S zsh starship zoxide eza bat fzf ripgrep fd
+paru -S zsh starship zoxide eza bat fzf ripgrep fd
 
 # System Tools
-sudo pacman -S btop wlogout networkmanager-dmenu keyd
+paru -S btop wlogout networkmanager-dmenu keyd
 
 # Korean Input
-sudo pacman -S fcitx5 fcitx5-hangul fcitx5-configtool fcitx5-gtk fcitx5-qt
+paru -S fcitx5 fcitx5-hangul fcitx5-configtool fcitx5-gtk fcitx5-qt
 
 # Fonts (optional)
-sudo pacman -S ttf-jetbrains-mono-nerd noto-fonts-cjk
+paru -S ttf-jetbrains-mono-nerd noto-fonts-cjk
 ```
 
 ## Keybindings

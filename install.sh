@@ -29,6 +29,7 @@ CONFIG_DIRS=(
     fuzzel
     swaylock
     fcitx5
+    yazi
 )
 
 # Create directories
