@@ -68,18 +68,30 @@ require "nvim-tree".setup({
 		local api = require "nvim-tree.api"
 		api.config.mappings.default_on_attach(bufnr)
 		local opts = { buffer = bufnr, noremap = true, silent = true }
-		vim.keymap.set('n', '-', function()
+		local function open_in_split(split_cmd)
 			local node = api.tree.get_node_under_cursor()
-			if node and node.type == 'file' then
-				vim.cmd('split ' .. vim.fn.fnameescape(node.absolute_path))
+			if not node or node.type ~= 'file' then return end
+			local path = vim.fn.fnameescape(node.absolute_path)
+			-- nvim-tree 외 편집 윈도우 찾기
+			local tree_win = vim.api.nvim_get_current_win()
+			local target_win = nil
+			for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+				if win ~= tree_win and vim.bo[vim.api.nvim_win_get_buf(win)].buftype == '' then
+					target_win = win
+					break
+				end
 			end
-		end, opts)
-		vim.keymap.set('n', '\\', function()
-			local node = api.tree.get_node_under_cursor()
-			if node and node.type == 'file' then
-				vim.cmd('vsplit ' .. vim.fn.fnameescape(node.absolute_path))
+			if target_win then
+				vim.api.nvim_set_current_win(target_win)
+				vim.cmd(split_cmd .. ' ' .. path)
+			else
+				-- 편집 윈도우가 없으면 nvim-tree 우측에 그냥 열기
+				vim.cmd('wincmd l')
+				vim.cmd('edit ' .. path)
 			end
-		end, opts)
+		end
+		vim.keymap.set('n', '-', function() open_in_split('split') end, opts)
+		vim.keymap.set('n', '\\', function() open_in_split('vsplit') end, opts)
 	end,
 })
 
