@@ -26,6 +26,8 @@ vim.pack.add({
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
 	{ src = "https://github.com/folke/which-key.nvim" },
+	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
+	{ src = "https://github.com/nvim-mini/mini.tabline" },
 })
 
 -- ============================================================
@@ -101,6 +103,9 @@ require "mini.statusline".setup()
 -- Auto close pair characters
 require "mini.pairs".setup()
 
+-- Tabline (열린 버퍼 목록 표시)
+require "mini.tabline".setup()
+
 -- Mini pick (fuzzy finder)
 require "mini.pick".setup({
 	mappings = {
@@ -155,6 +160,9 @@ require "neogit".setup({
 
 -- Diffview (변경 파일 목록 + diff 미리보기)
 require "diffview".setup()
+
+-- Gitsigns (줄 단위 Git 변경 표시)
+require "gitsigns".setup()
 
 -- 포매터 (conform.nvim)
 require "conform".setup({
@@ -217,6 +225,9 @@ vim.keymap.set('n', '<leader>s', ':write<CR>', { desc = 'Save', silent = true })
 -- 파일 탐색기
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'Explorer', silent = true })
 
+-- 버퍼
+vim.keymap.set('n', '<leader>x', ':bdelete<CR>', { desc = 'Close buffer', silent = true })
+
 -- Find (검색)
 vim.keymap.set('n', '<leader>ff', MiniPick.builtin.files, { desc = 'Files' })
 vim.keymap.set('n', '<leader>fg', MiniPick.builtin.grep_live, { desc = 'Grep' })
@@ -271,8 +282,16 @@ vim.cmd("colorscheme kanagawa-dragon")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+vim.api.nvim_set_hl(0, "LineNr", { fg = "#b8b4a8", bg = "none" })
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#f2d78b", bold = true, bg = "none" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = "#76946a", bg = "none" })
+vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "#dca561", bg = "none" })
+vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = "#c34043", bg = "none" })
+vim.api.nvim_set_hl(0, "DiagnosticSignError", { fg = "#e82424", bg = "none" })
+vim.api.nvim_set_hl(0, "DiagnosticSignWarn", { fg = "#ff9e3b", bg = "none" })
+vim.api.nvim_set_hl(0, "DiagnosticSignInfo", { fg = "#658594", bg = "none" })
+vim.api.nvim_set_hl(0, "DiagnosticSignHint", { fg = "#6a9589", bg = "none" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
 
 -- 창 구분선
