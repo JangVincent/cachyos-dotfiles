@@ -5,9 +5,10 @@
 
     # Geometry
     width = 350
-    height = 150
+    height = (0, 150)
     origin = top-right
-    offset = 20x20
+    offset = (20, 20)
+    gap_size = 8
 
     # Progress bar
     progress_bar = true
