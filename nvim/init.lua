@@ -7,6 +7,7 @@ vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 vim.g.mapleader = " "
 vim.o.clipboard = 'unnamedplus'
+vim.filetype.add({ extension = { prisma = "prisma" } })
 
 vim.pack.add({
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
@@ -145,7 +146,12 @@ require "nvim-treesitter".install({
 	"json", "html", "css", "yaml", "dockerfile",
 	"terraform", "sql", "c", "cpp", "rust",
 	"bash", "markdown", "toml", "vim", "vimdoc",
-	"svelte",
+	"svelte", "prisma",
+})
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function(args)
+		pcall(vim.treesitter.start, args.buf)
+	end,
 })
 vim.o.foldmethod = "expr"
 vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
@@ -167,6 +173,10 @@ require "gitsigns".setup()
 
 -- 포매터 (conform.nvim)
 require "conform".setup({
+	format_on_save = {
+		timeout_ms = 2000,
+		lsp_format = "fallback",
+	},
 	formatters_by_ft = {
 		lua = { "stylua" },
 		python = { "ruff_format" },
@@ -189,7 +199,7 @@ require "conform".setup({
 })
 
 -- LSP + Mason
-local language_server_list = { "lua_ls", "pyright", "jsonls", "html", "cssls", "yamlls", "dockerls", "terraformls", "sqlls", "clangd", "rust_analyzer", "ts_ls", "svelte" }
+local language_server_list = { "lua_ls", "pyright", "jsonls", "html", "cssls", "yamlls", "dockerls", "terraformls", "sqlls", "clangd", "rust_analyzer", "ts_ls", "svelte", "prismals" }
 require "mason".setup()
 require "mason-lspconfig".setup({
 	ensure_installed = language_server_list
@@ -246,7 +256,7 @@ vim.keymap.set('n', '<leader>gq', ':DiffviewClose<CR>', { desc = 'Close diff', s
 
 -- LSP
 vim.keymap.set('n', '<leader>lf', function()
-	require "conform".format({ lsp_fallback = true })
+	require "conform".format({ lsp_format = "fallback" })
 end, { desc = 'Format' })
 vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { desc = 'Rename' })
 vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, { desc = 'Code action' })

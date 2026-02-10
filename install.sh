@@ -91,6 +91,13 @@ if ! command -v xwayland-satellite &> /dev/null; then
     echo "  Required for X11/Electron apps (Slack, Spotify, etc.)"
 fi
 
+# Check for tree-sitter-cli (required for Neovim treesitter parsers)
+if ! command -v tree-sitter &> /dev/null; then
+    echo "WARNING: tree-sitter-cli not found!"
+    echo "  Install: paru -S tree-sitter-cli"
+    echo "  Required for Neovim syntax highlighting"
+fi
+
 echo ""
 echo "=== Done! ==="
 echo "Reload Niri config or restart session"

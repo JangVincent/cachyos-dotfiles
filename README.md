@@ -76,6 +76,9 @@ paru -S btop wlogout networkmanager-dmenu keyd
 # Korean Input
 paru -S fcitx5 fcitx5-hangul fcitx5-configtool fcitx5-gtk fcitx5-qt
 
+# Neovim & Development
+paru -S tree-sitter-cli
+
 # Fonts (optional)
 paru -S ttf-jetbrains-mono-nerd noto-fonts-cjk
 ```
