@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Swap between macOS-style (Alt-Super swapped) and standard keyboard layout
+# Configs: config.kdl (swapped) / config-no-swap.kdl (standard)
+
+NIRI_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/niri"
+CURRENT="$NIRI_DIR/config.kdl"
+SWAPPED="$NIRI_DIR/config-swapped.kdl"
+STANDARD="$NIRI_DIR/config-no-swap.kdl"
+
+if [ ! -f "$STANDARD" ] || [ ! -f "$CURRENT" ]; then
+    echo "Error: config files not found in $NIRI_DIR"
+    exit 1
+fi
+
+# Check which layout is active by looking for swap_lalt_lwin
+if grep -q "swap_lalt_lwin" "$CURRENT"; then
+    # Currently swapped → switch to standard
+    cp "$CURRENT" "$SWAPPED"
+    cp "$STANDARD" "$CURRENT"
+    echo "Switched to: standard layout"
+else
+    # Currently standard → switch to swapped
+    if [ -f "$SWAPPED" ]; then
+        cp "$CURRENT" "$STANDARD"
+        cp "$SWAPPED" "$CURRENT"
+        echo "Switched to: swapped layout (macOS-style)"
+    else
+        echo "Error: swapped config not found at $SWAPPED"
+        exit 1
+    fi
+fi
+
+echo "Reloading niri..."
+niri msg action do-screen-transition

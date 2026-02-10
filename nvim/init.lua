@@ -145,6 +145,7 @@ require "nvim-treesitter".install({
 	"json", "html", "css", "yaml", "dockerfile",
 	"terraform", "sql", "c", "cpp", "rust",
 	"bash", "markdown", "toml", "vim", "vimdoc",
+	"svelte",
 })
 vim.o.foldmethod = "expr"
 vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
@@ -183,11 +184,12 @@ require "conform".setup({
 		cpp = { "clang-format" },
 		terraform = { "terraform_fmt" },
 		sql = { "sql_formatter" },
+		svelte = { "prettier" },
 	},
 })
 
 -- LSP + Mason
-local language_server_list = { "lua_ls", "pyright", "jsonls", "html", "cssls", "yamlls", "dockerls", "terraformls", "sqlls", "clangd", "rust_analyzer", "ts_ls" }
+local language_server_list = { "lua_ls", "pyright", "jsonls", "html", "cssls", "yamlls", "dockerls", "terraformls", "sqlls", "clangd", "rust_analyzer", "ts_ls", "svelte" }
 require "mason".setup()
 require "mason-lspconfig".setup({
 	ensure_installed = language_server_list

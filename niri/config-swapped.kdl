@@ -1,4 +1,4 @@
-// Niri Configuration - Standard keyboard layout (no Alt-Super swap)
+// Niri Configuration - Converted from Hyprland
 // https://yalter.github.io/niri/Configuration:-Introduction
 
 // ============================================================
@@ -8,7 +8,7 @@ input {
     keyboard {
         xkb {
             layout "us"
-            options "ctrl:nocaps"
+            options "altwin:swap_lalt_lwin,ctrl:nocaps"
         }
         numlock
     }
@@ -153,7 +153,7 @@ window-rule {
 }
 
 // ============================================================
-// KEYBINDINGS (Standard layout - Super as main modifier)
+// KEYBINDINGS (macOS Style from Hyprland)
 // ============================================================
 binds {
     // Show hotkey overlay
@@ -166,7 +166,7 @@ binds {
     Mod+Shift+B { spawn "firefox"; }
     Mod+Shift+C { spawn "zeditor"; }
 
-    // Fuzzel (launcher)
+    // Fuzzel (Spotlight style)
     Mod+Space { spawn "fuzzel"; }
     Mod+Shift+E { spawn "fuzzel"; }
     Mod+V { spawn-sh "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
@@ -258,6 +258,9 @@ binds {
     Mod+Shift+9 { move-column-to-workspace 9; }
     Mod+Shift+0 { move-column-to-workspace 10; }
 
+    // Relative workspace navigation
+    Ctrl+Right { focus-workspace-down; }
+    Ctrl+Left { focus-workspace-up; }
     Mod+Page_Down { focus-workspace-down; }
     Mod+Page_Up { focus-workspace-up; }
 
@@ -278,7 +281,10 @@ binds {
 
     //? ------- Hardware Controls ----------------
     // Audio (with swayosd)
+    F10 allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
     XF86AudioMute allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+    F11 allow-when-locked=true { spawn "swayosd-client" "--output-volume" "lower"; }
+    F12 allow-when-locked=true { spawn "swayosd-client" "--output-volume" "raise"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "lower"; }
     XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "raise"; }
     XF86AudioMicMute allow-when-locked=true { spawn "swayosd-client" "--input-volume" "mute-toggle"; }
