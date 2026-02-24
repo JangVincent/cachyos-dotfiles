@@ -146,7 +146,7 @@ require "nvim-treesitter".install({
 	"json", "html", "css", "yaml", "dockerfile",
 	"terraform", "sql", "c", "cpp", "rust",
 	"bash", "markdown", "toml", "vim", "vimdoc",
-	"svelte", "prisma",
+	"svelte", "prisma", "erlang", "elixir", "heex",
 })
 vim.api.nvim_create_autocmd("FileType", {
 	callback = function(args)
@@ -199,7 +199,7 @@ require "conform".setup({
 })
 
 -- LSP + Mason
-local language_server_list = { "lua_ls", "pyright", "jsonls", "html", "cssls", "yamlls", "dockerls", "terraformls", "sqlls", "clangd", "rust_analyzer", "ts_ls", "svelte", "prismals" }
+local language_server_list = { "lua_ls", "pyright", "jsonls", "html", "cssls", "yamlls", "dockerls", "terraformls", "sqlls", "clangd", "rust_analyzer", "ts_ls", "svelte", "prismals", "erlangls", "elixirls" }
 require "mason".setup()
 require "mason-lspconfig".setup({
 	ensure_installed = language_server_list
