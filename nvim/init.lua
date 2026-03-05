@@ -199,7 +199,7 @@ require "conform".setup({
 })
 
 -- LSP + Mason
-local language_server_list = { "lua_ls", "pyright", "jsonls", "html", "cssls", "yamlls", "dockerls", "terraformls", "sqlls", "clangd", "rust_analyzer", "ts_ls", "svelte", "prismals", "erlangls", "elixirls" }
+local language_server_list = { "lua_ls", "pyright", "jsonls", "html", "cssls", "yamlls", "dockerls", "terraformls", "sqlls", "clangd", "rust_analyzer", "ts_ls", "svelte", "prismals", "elixirls" }
 require "mason".setup()
 require "mason-lspconfig".setup({
 	ensure_installed = language_server_list
