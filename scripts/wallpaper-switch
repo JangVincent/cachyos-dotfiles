@@ -32,7 +32,7 @@ set_wallpaper() {
     file=$(get_wallpaper "$idx")
 
     if [ -f "$file" ]; then
-        swww img "$file" \
+        awww img "$file" \
             --transition-type grow \
             --transition-duration 1 \
             --transition-fps 60 \

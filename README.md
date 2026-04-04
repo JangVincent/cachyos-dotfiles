@@ -56,7 +56,7 @@ cd ~/dotfiles
 
 ```bash
 # Core - Window Manager & Desktop
-paru -S niri waybar kitty dunst fuzzel swaylock swww
+paru -S niri waybar kitty dunst fuzzel swaylock awww
 
 # XWayland support (AUR)
 paru -S xwayland-satellite
