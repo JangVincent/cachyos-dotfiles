@@ -140,16 +140,10 @@ animations {
 // ============================================================
 // WINDOW RULES
 // ============================================================
-// Firefox PiP
+// Chrome PiP
 window-rule {
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r#"[Gg]oogle-chrome"# title="^Picture in picture$"
     open-floating true
-}
-
-// WezTerm fix
-window-rule {
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
 }
 
 // ============================================================
@@ -163,7 +157,7 @@ binds {
     //? ------- Apps ----------------
     Mod+T { spawn "kitty"; }
     Mod+E { spawn "thunar"; }
-    Mod+Shift+B { spawn "firefox"; }
+    Mod+Shift+B { spawn "google-chrome-unstable"; }
     Mod+Shift+C { spawn "zeditor"; }
 
     // Fuzzel (launcher)
