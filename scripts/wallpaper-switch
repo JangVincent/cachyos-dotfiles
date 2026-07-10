@@ -64,8 +64,11 @@ case "$1" in
         random=$((RANDOM % total + 1))
         set_wallpaper "$random"
         ;;
+    restore)
+        set_wallpaper "$current"
+        ;;
     *)
-        echo "Usage: wallpaper-switch [next|prev|random]"
+        echo "Usage: wallpaper-switch [next|prev|random|restore]"
         exit 1
         ;;
 esac
